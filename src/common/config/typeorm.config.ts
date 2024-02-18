@@ -23,7 +23,7 @@ export class TypeormConfig implements TypeOrmOptionsFactory {
       migrationsRun: false,
       retryAttempts: 10,
       retryDelay: 3000,
-      entities: [`${__dirname}/../modules/**/entities/*.entity.{js,ts}`],
+      entities: [`src/modules/**/entities/*.entity.{js,ts}`],
       migrationsTableName: 'migrations',
       migrations: [`${__dirname}/../migrations/**/*{.ts,.js}`],
     };
