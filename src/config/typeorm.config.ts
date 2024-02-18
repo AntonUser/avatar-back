@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
-import { environment } from '../../environment';
+import { environment } from '../environment';
 
 export class TypeormConfig implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
@@ -23,7 +23,7 @@ export class TypeormConfig implements TypeOrmOptionsFactory {
       migrationsRun: false,
       retryAttempts: 10,
       retryDelay: 3000,
-      entities: [`src/modules/**/entities/*.entity.{js,ts}`],
+      entities: [`${__dirname}/../modules/**/entities/*.entity.{js,ts}`],
       migrationsTableName: 'migrations',
       migrations: [`${__dirname}/../migrations/**/*{.ts,.js}`],
     };
