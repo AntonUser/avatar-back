@@ -25,7 +25,7 @@ export class TypeormConfig implements TypeOrmOptionsFactory {
       retryDelay: 3000,
       entities: [`${__dirname}/../modules/**/entities/*.entity.{js,ts}`],
       migrationsTableName: 'migrations',
-      migrations: [`${__dirname}/../migrations/**/*{.ts,.js}`],
+      migrations: [`${__dirname}/../common/migrations/**/*{.ts,.js}`],
     };
   }
 }
