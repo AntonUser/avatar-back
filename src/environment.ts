@@ -26,4 +26,9 @@ export const environment = {
     username: env.get('PGSQL_USERNAME').required().asString(),
     password: env.get('PGSQL_PASSWORD').required().asString(),
   },
+  redis: {
+    port: env.get('REDIS_PORT').required().default(6379).asPortNumber(),
+    host: env.get('REDIS_HOST').required().default('localhost').asString(),
+    password: env.get('REDIS_PASSWORD').required().asString(),
+  },
 };

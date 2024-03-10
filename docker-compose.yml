@@ -15,8 +15,22 @@ services:
     networks:
       - backend_internal
 
+  redis:
+    container_name: avatar-redis
+    image: redis:7-alpine
+    volumes:
+      - avatar_redisdata:/data
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - ${REDIS_PORT}:6379
+    networks:
+      - backend_internal
+    restart: unless-stopped
+
 volumes:
   avatar_db:
+  avatar_redisdata:
 
 networks:
   backend_internal:
