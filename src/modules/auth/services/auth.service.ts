@@ -70,6 +70,7 @@ export class AuthService {
     await this.redisService.set<string>(
       this.getRefreshTokenKey(refreshToken),
       refreshToken,
+      environment.tokenKeys.refreshTokenExpiresIn / 1000,
     );
 
     return {
