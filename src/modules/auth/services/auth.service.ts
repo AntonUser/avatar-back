@@ -12,12 +12,14 @@ import { UsersService } from '../../users/services/users.service';
 import { Errors } from '../enums/errors.enum';
 import { UsersEntity } from '../../users/entities/users.entity';
 import { RegistrationDTO } from '../dto/registration.dto';
+import { RedisService } from '../../redis/services/redis.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
+    private readonly redisService: RedisService,
   ) {}
 
   async login(dto: LoginDTO): Promise<IAuthTokens> {
@@ -65,9 +67,24 @@ export class AuthService {
       }),
     ]);
 
+    await this.redisService.set<string>(
+      this.getRefreshTokenKey(refreshToken),
+      refreshToken,
+    );
+
     return {
       accessToken,
       refreshToken,
     };
+  }
+
+  async logout(token: string): Promise<boolean> {
+    const key = this.getRefreshTokenKey(token);
+    await this.redisService.delete(key);
+    return true;
+  }
+
+  getRefreshTokenKey(token: string): string {
+    return `refresh-${token}`;
   }
 }
