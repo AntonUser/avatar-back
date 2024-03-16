@@ -31,4 +31,10 @@ export const environment = {
     host: env.get('REDIS_HOST').required().default('localhost').asString(),
     password: env.get('REDIS_PASSWORD').required().asString(),
   },
+  s3: {
+    accessKey: env.get('S3_ACCESS_KEY').required().asString(),
+    secretKey: env.get('S3_SECRET_KEY').required().asString(),
+    baseUrl: env.get('S3_ENDPOINT').required().asString(),
+    bucketName: env.get('S3_BUCKET_NAME').required().asString(),
+  },
 };

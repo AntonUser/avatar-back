@@ -6,6 +6,8 @@ import { TypeormConfig } from './config/typeorm.config';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { RedisModule } from './modules/redis/redis.module';
+import { S3Module } from './modules/s3/s3.module';
+import { FilesModule } from './modules/files/files.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { RedisModule } from './modules/redis/redis.module';
     UsersModule,
     AuthModule,
     RedisModule,
+    S3Module,
+    FilesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
