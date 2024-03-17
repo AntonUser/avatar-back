@@ -22,7 +22,11 @@ export class JwtRefreshStrategy extends PassportStrategy(
     });
   }
 
-  async validate(payload: IJwtPayload) {
+  async validate(payload?: IJwtPayload) {
+    if (!payload) {
+      throw new UnauthorizedException();
+    }
+
     const { id } = payload;
     const user = await this.entityManager
       .getRepository(UsersEntity)
@@ -31,6 +35,6 @@ export class JwtRefreshStrategy extends PassportStrategy(
     if (!user) {
       throw new UnauthorizedException();
     }
-    return user;
+    return payload;
   }
 }

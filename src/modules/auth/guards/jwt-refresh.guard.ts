@@ -28,13 +28,15 @@ export class JwtRefreshGuard
       : undefined;
 
     if (token) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       return this.redisService
         .get<string>(this.authService.getRefreshTokenKey(token))
-        .then((value) => {
-          return Boolean(value);
+        .then((value): boolean | Promise<boolean> | Observable<boolean> => {
+          return value ? super.canActivate(context) : false;
         });
     }
 
-    return false;
+    return super.canActivate(context);
   }
 }
