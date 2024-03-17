@@ -8,6 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { RedisModule } from './modules/redis/redis.module';
 import { S3Module } from './modules/s3/s3.module';
 import { FilesModule } from './modules/files/files.module';
+import { DronesModule } from './modules/drones/drones.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { FilesModule } from './modules/files/files.module';
     RedisModule,
     S3Module,
     FilesModule,
+    DronesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
