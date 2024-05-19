@@ -35,11 +35,9 @@ export function ApiResponseDecorator(
         typeof input === 'object' && 'code' in input ? input.code : input;
       const options =
         typeof input === 'object' && 'options' in input ? input.options : {};
-
       const errorOptions: ApiResponseOptions = {
         type: ErrorResponse,
       };
-
       switch (statusCode) {
         case HttpStatus.OK:
           return ApiOkResponse(options);

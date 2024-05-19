@@ -17,4 +17,13 @@ export class DroneEntity extends BaseEntity implements IDrone {
 
   @Column({ type: 'text', nullable: true })
   imageId: string | null;
+
+  @Column({ type: 'text', nullable: true })
+  cameraIp: string | null;
+
+  @Column({ type: 'text', nullable: true })
+  cameraLogin: string | null;
+
+  @Column({ type: 'text', nullable: true })
+  cameraPassword: string | null;
 }

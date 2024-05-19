@@ -17,4 +17,19 @@ export class CreateDroneDTO {
   @IsOptional()
   @IsString()
   imageId?: string;
+
+  @ApiPropertyOptional({ example: '89.207.132.170' })
+  @IsOptional()
+  @IsString()
+  cameraIp?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  cameraLogin?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  cameraPassword?: string;
 }

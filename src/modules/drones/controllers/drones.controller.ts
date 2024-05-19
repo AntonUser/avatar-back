@@ -61,7 +61,7 @@ export class DronesController {
 
   @ApiOperation({ description: 'Получить беспилотник по id' })
   @ApiResponseDecorator([
-    { code: HttpStatus.OK, options: { type: BooleanResponseRTO } },
+    { code: HttpStatus.OK, options: { type: OneDroneRTO } },
   ])
   @Get(':id')
   getById(@Param('id', ParseUUIDPipe) id: string): Promise<IDrone> {
