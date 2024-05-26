@@ -32,4 +32,14 @@ export class CreateDroneDTO {
   @IsOptional()
   @IsString()
   cameraPassword?: string;
+
+  @ApiPropertyOptional({ example: '89.207.132.170' })
+  @IsOptional()
+  @IsString()
+  droneIp?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  droneToken?: string;
 }
