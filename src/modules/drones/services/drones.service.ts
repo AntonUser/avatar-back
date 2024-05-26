@@ -30,7 +30,11 @@ export class DronesService {
   getList(dto: GetDronesDTO): Promise<ListResponse<IDrone>> {
     const query = this.repository.createQueryBuilder(this.alias);
     if (dto.type) {
-      query.where(`${this.alias}.type = :type`, { type: dto.type });
+      query.andWhere(`${this.alias}.type = :type`, { type: dto.type });
+    }
+
+    if (dto.ids) {
+      query.andWhere(`${this.alias}.id IN (:...ids)`, { ids: dto.ids });
     }
 
     if (dto.sortBy) {
